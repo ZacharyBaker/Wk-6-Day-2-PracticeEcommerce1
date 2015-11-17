@@ -1,0 +1,26 @@
+{
+  "name": "ecommerce-part-one",
+  "version": "1.0.0",
+  "description": "eCommerce Project - Part I =================",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZacharyBaker/Wk-6-Day-2-PracticeEcommerce1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZacharyBaker/Wk-6-Day-2-PracticeEcommerce1/issues"
+  },
+  "homepage": "https://github.com/ZacharyBaker/Wk-6-Day-2-PracticeEcommerce1#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "mongodb": "^2.0.48",
+    "mongojs": "^1.4.1"
+  }
+}
