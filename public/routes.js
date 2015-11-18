@@ -12,5 +12,10 @@ function routing($stateProvider, $urlRouterProvider){
 			templateUrl: './features/home/homeTmpl.html',
 			controller: 'homeCtrl'
 		})
+		.state('admin', {
+			url: '/admin',
+			templateUrl: './features/admin/adminTmpl.html',
+			controller: 'adminCtrl'
+		})
 	
 }
