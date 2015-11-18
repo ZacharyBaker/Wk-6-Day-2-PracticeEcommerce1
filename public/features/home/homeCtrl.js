@@ -1,13 +1,13 @@
 var app = angular.module('app');
 
-app.controller('homeCtrl', ['$scope', 'homeService', '$state', homeController]);
+app.controller('homeCtrl', ['$scope', 'mainService', '$state', homeController]);
 
-function homeController($scope, homeService, $state){
+function homeController($scope, mainService, $state){
 	$scope.test = 'hi';
 	
 	
 	$scope.getProducts = function(){
-		homeService.getProducts()
+		mainService.getProducts()
 			.then(function(response){
 				$scope.products = response.data;
 				console.log($scope.products);

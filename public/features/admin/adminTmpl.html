@@ -4,3 +4,19 @@ this is the admin page
 
 
 <button ng-click="changeToHome()">To home</button>
+
+
+<input type="text" placeholder="name" ng-model="itemObj.name">
+<input type="text" placeholder="price" ng-model="itemObj.price">
+<button ng-click="addItem(itemObj)">Add Item</button>
+<input type="text" placeholder="id..." ng-model="itemID">
+<button ng-click="deleteById(itemID)">Delete By Id</button>
+
+
+<div ng-repeat="product in products">
+	
+		product : {{product.name}} price : {{product.price}}
+		
+		id: {{product._id}}
+	
+</div>
