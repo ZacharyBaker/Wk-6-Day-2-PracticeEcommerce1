@@ -1,12 +1,14 @@
 var express = require('express');
 var cors = require('cors');
-var mongoJS = require('mongojs');
+// var mongoJS = require('mongojs');
 var bodyParser = require('body-parser');
-var mongoDB = require('mongodb')
+// var mongoDB = require('mongodb')
+var mongoose = require('mongoose');
+var mongoUri = 'mongodb://localhost:27017/ecommerce'
+// var db = mongoJS('ecommerce');
+// var products = db.collection('products');
+var productCtrl = require('./controllers/productCtrl');
 
-
-var db = mongoJS('ecommerce');
-var products = db.collection('products');
 var app = express();
 
 app.use(bodyParser.json());
@@ -14,33 +16,13 @@ app.use(cors());
 
 
 
-app.post('/products', function(req, res, next){
-	products.insert(req.body, function(err, result){
-		if(err) return res.send(err);
-		else return res.status(200).json(result);
-	})
-});
+app.post('/products', productCtrl.addProduct);
 
-app.get('/products', function(req, res, next){
-	products.find(req.query, function(err, result){
-		if(err) return res.send(err);
-		else return res.status(200).json(result);
-	})
-});
+app.get('/products', productCtrl.getProducts);
 
-app.put('/products', function(req, res, next){
-	products.update({"_id": mongoJS.ObjectId(req.query.id)}, req.body, function(err, result){
-		if(err) return res.send(err);
-		else return res.status(200).json(result);
-	})
-});
+app.put('/products/:id', productCtrl.updateProductById);
 
-app.delete('/products', function(req, res, next){
-	products.remove({"_id": mongoJS.ObjectId(req.query.id)}, function(err, result){
-		if(err) return res.send(err);
-		else return res.status(200).json(result);
-	})
-});
+app.delete('/products/:id', productCtrl.deleteProductById);
 
 
 
@@ -50,6 +32,13 @@ app.delete('/products', function(req, res, next){
 
 app.use(express.static('./public'));
 
+
+
 app.listen(4002, function(){
 	console.log("listening on port 4002");
+})
+
+mongoose.connect(mongoUri);
+mongoose.connection.once('open', function(){
+	console.log('connected to MongoDb at ' + mongoUri);
 })

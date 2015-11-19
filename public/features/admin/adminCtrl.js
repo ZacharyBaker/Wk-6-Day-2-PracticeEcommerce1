@@ -14,6 +14,7 @@ app.controller('adminCtrl', ['$scope', '$state', 'mainService',
 		mainService.addItem(item)
 		.then(function(response){
 			$scope.getProducts(); 
+			$scope.itemObj = {};
 		})
 	}
 	
@@ -28,6 +29,14 @@ app.controller('adminCtrl', ['$scope', '$state', 'mainService',
 	
 	$scope.deleteById = function(id){
 		mainService.deleteById(id);
+		$scope.getProducts();
 	}
+	
+	$scope.updateItem = function(itemWithRevisions){
+		mainService.updateItem(itemWithRevisions);
+		$scope.getProducts();
+	}
+	
+	
 	
 }])

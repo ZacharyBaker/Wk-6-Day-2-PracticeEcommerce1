@@ -9,14 +9,16 @@ this is the admin page
 <input type="text" placeholder="name" ng-model="itemObj.name">
 <input type="text" placeholder="price" ng-model="itemObj.price">
 <button ng-click="addItem(itemObj)">Add Item</button>
-<input type="text" placeholder="id..." ng-model="itemID">
-<button ng-click="deleteById(itemID)">Delete By Id</button>
 
 
 <div ng-repeat="product in products">
-	
-		product : {{product.name}} price : {{product.price}}
-		
-		id: {{product._id}}
-	
+
+	product : {{product.name}} price : {{product.price}} id: {{product._id}}
+	<button ng-click="deleteById(product._id)">x</button>
+	<div></div>
+
 </div>
+<h6>update by id</h6><button ng-click="updateItem(itemWithRevisions)">Update</button>
+<input type="text" placeholder="id..." ng-model="itemWithRevisions.id">
+<input type="text" placeholder="name..." ng-model="itemWithRevisions.name">
+<input type="text" placeholder="price..." ng-model="itemWithRevisions.price">
